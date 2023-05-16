@@ -1,0 +1,44 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    font-weight: 400;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+}
+.calc-row {
+    height: 100vh;
+    font-family: 'Share Tech Mono', monospace;
+}
+.input-window {
+    text-align: end;
+    font-size: x-large;
+    text-decoration: none !important;
+}
+input, button {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.form-group {
+    width: 320px;
+}
+button {
+    margin-bottom: 2px;
+    width: 96% !important;
+    font-weight: 100;
+}
+#btn_clr {
+    margin-top: 2px;
+}
+#btn_clr, #btn_equals, #btn_plus, #btn_minus, #btn_multiply, #btn_divide {
+    width: 100% !important;
+}
+.align-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#btn_equals {
+    font-weight: 600;
+}

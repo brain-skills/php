@@ -1,24 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Калькулятор</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="assets/images/favicons/512.png" sizes="512x512" />
+    <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="assets/images/favicons/256.png" sizes="256x256" />
+    <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="assets/images/favicons/128.png" sizes="128x128" />
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon.png" sizes="64x64">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
 </head>
+
 <body>
 <div class="container">
     <div class="row calc-row align-items-center">
-        <div class="col col-md-4 offset-md-4">
+        <div class="col align-all">
             <div class="form-group">
                 <div class="card" id="calc">
                     <div class="card-body">
-                        <input class="form-control input-window" id="inputWindow" value="">
+                        <label for="cheese">Calculator</label>
+                        <input class="form-control input-window" id="inputWindow" value="" autofocus>
                         <div class="row no-gutters">
-                            <div class="col">
-                                <button class="btn btn-outline-danger form-control" id="btn_clr">C</button>
+                            <div class="col-12">
+                                <button class="btn btn-danger form-control" id="btn_clr">C</button>
+                            </div>
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col-9">
+                                <div class="row no-gutters">
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_one">1</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_two">2</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_three">3</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_four">4</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_five">5</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_six">6</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_seven">7</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_eight">8</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_nine">9</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_dot">.</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_zero">0</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary form-control" id="btn_root">√</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button class="btn btn-primary form-control" id="btn_plus">+</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary form-control" id="btn_minus">-</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary form-control" id="btn_multiply">*</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary form-control" id="btn_divide">/</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col-3">
+                                <button class="btn btn-primary form-control" id="btn_exponentiation">x<sup>y</sup></button>
+                            </div>
+                            <div class="col-9">
+                                <button class="btn btn-success form-control" id="btn_equals">=</button>
                             </div>
                         </div>
                     </div>
@@ -27,6 +99,6 @@
         </div>
     </div>
 </div>
-<script src="script.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
