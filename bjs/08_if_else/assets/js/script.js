@@ -8,8 +8,6 @@ if (isNaN(minValue) || isNaN(maxValue)){
    maxValue = 100;
 }
 let answerNumber  = Math.floor((minValue + maxValue) / 2);
-var lastAnswer = transform(answerNumber);
-console.log('Ответ ', transform(answerNumber));
 let orderNumber = 1;
 let gameRun = true;
 (maxValue > 999) ? maxValue = 999 : maxValue;
@@ -18,7 +16,7 @@ alert(`Загадайте любое целое число от ${minValue} до
 const orderNumberField = document.getElementById('orderNumberField');
 const answerField = document.getElementById('answerField');
 orderNumberField.innerText = orderNumber;
-answerField.innerText = `Вы загадали число ${lastAnswer}?`;
+answerField.innerText = `Вы загадали число ${answerNumber}?`;
 
 document.getElementById('btnRetry').addEventListener('click', function() {
    minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
@@ -28,7 +26,8 @@ document.getElementById('btnRetry').addEventListener('click', function() {
    orderNumber = 1;
    gameRun = true;
    orderNumberField.innerText = orderNumber;
-   answerField.innerText = `Вы загадали число ${lastAnswer}?`;
+   answerField.innerText = `Вы загадали число ${answerNumber}?`;
+   transform(answerNumber);
 })
 
 document.getElementById('btnLess').addEventListener('click', function() {
@@ -44,8 +43,9 @@ document.getElementById('btnLess').addEventListener('click', function() {
          orderNumber++;
          orderNumberField.innerText = orderNumber;
          const questionRandom = Math.round(Math.random() * 2); 
-         const question = (questionRandom === 1) ? `Вы загадали ${lastAnswer}?` : (questionRandom === 2) ? `Наверно это ${lastAnswer}?` : `Может это ${lastAnswer}?` ;
+         const question = (questionRandom === 1) ? `Вы загадали ${answerNumber}?` : (questionRandom === 2) ? `Наверно это ${answerNumber}?` : `Может это ${answerNumber}?` ;
          answerField.innerText = question;
+         transform(answerNumber);
       }
    }
 })
@@ -63,11 +63,12 @@ document.getElementById('btnOver').addEventListener('click', function() {
          orderNumber++;
          orderNumberField.innerText = orderNumber;
          const questionRandom = Math.round(Math.random() * 2); 
-         const question = (questionRandom === 1) ? `Вы загадали ${lastAnswer}?` : (questionRandom === 2) ? `Наверно это ${lastAnswer}?` : `Может это ${lastAnswer}?`;
+         const question = (questionRandom === 1) ? `Вы загадали ${answerNumber}?` : (questionRandom === 2) ? `Наверно это ${answerNumber}?` : `Может это ${answerNumber}?`;
          answerField.innerText = question;
+         transform(answerNumber); 
       }
    }
-})
+});
 
 document.getElementById('btnEqual').addEventListener('click', function() {
    if (gameRun){
@@ -199,4 +200,4 @@ function transform(number){
       }
    }
 };
- // Введите любое положительное или отрицательное число от -999 до 999 включительно с 0.
+transform(answerNumber);
