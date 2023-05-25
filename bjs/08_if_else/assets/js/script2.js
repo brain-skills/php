@@ -1,5 +1,5 @@
 let minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+let maxValue = parseInt(prompt('Максимальное знание числа для игры','300'));
 if (isNaN(minValue) || isNaN(maxValue)){
     minValue = 0;
     maxValue = 100;
@@ -111,78 +111,104 @@ function transform(number){
    if(number < 0){sign = false};
 
    for(let i=0; i <= 10; i++){
-      if(number >= 0 && number <= 9 && oneNumb[i] == number){console.log(oneText[i]);}
-      if(!sign && numbAbs == oneNumb[i]){console.log('Минус', oneText[i]);};
-
-      if(number >= 11 && number <= 19 && elvNumb[i] == number){console.log(elvText[i]);}
-      if(!sign && numbAbs == elvNumb[i]){console.log('Минус', elvText[i]);};
-
-      if(number >= 10 && number <= 90 && tanNumb[i] == number){console.log(tanText[i]);}
-      if(!sign && numbAbs == tanNumb[i]){console.log('Минус', tanText[i]);};
-
-      if(number >= 100 && number <= 900 && hunNumb[i] == number){console.log(hunText[i]);}
-      if(!sign && numbAbs == hunNumb[i]){console.log('Минус', hunText[i]);};
-
-      if(numbAbs >= 21 && numbAbs <= 99){
+      if(number >= 0 && number <= 9 && oneNumb[i] == number){
+         answerField.innerText = `Вы загадали число ${oneText[i]} ?`
+      }
+      if(!sign && numbAbs == oneNumb[i]){
+         answerField.innerText = `Вы загадали число минус ${oneText[i]} ?`
+      }
+      if(number >= 11 && number <= 19 && elvNumb[i] == number){
+         answerField.innerText = `Вы загадали число ${elvText[i]} ?`
+      }
+      if(!sign && numbAbs == elvNumb[i]){
+         answerField.innerText = `Вы загадали число минус ${elvText[i]} ?`
+      }
+      if(number >= 10 && number <= 90 && tanNumb[i] == number){
+         answerField.innerText = `Вы загадали число ${tanText[i]} ?`
+      }
+      if(!sign && numbAbs == tanNumb[i]){
+         answerField.innerText = `Вы загадали число минус ${tanText[i]} ?`
+      }
+      if(number >= 100 && number <= 900 && hunNumb[i] == number){
+         answerField.innerText = `Вы загадали число ${hunText[i]} ?`
+      }
+      if(!sign && numbAbs == hunNumb[i]){
+         answerField.innerText = `Вы загадали число минус ${hunText[i]} ?`
+      }
+      // от 101 до 909
+      if(numbAbs >= 21 && numbAbs <= 99 && remaind !== 0){
          for(o = 0; o <= 10; o++){
-            if(circle == oneNumb[i] && remaind == oneNumb[o]){console.log(tanText[i], oneText[o]);}
-            if(!sign && Math.abs(circle) == oneNumb[i] && Math.abs(remaind) == oneNumb[o]){console.log('Минус', tanText[i], oneText[o]);};
+            if(circle == oneNumb[i] && remaind == oneNumb[o]){
+               answerField.innerText = `Вы загадали число ${tanText[i]} ${oneText[o]} ?`
+            }
+            if(!sign && Math.abs(circle) == oneNumb[i] && Math.abs(remaind) == oneNumb[o]){
+               answerField.innerText = `Вы загадали число минус ${tanText[i]} ${oneText[o]} ?`
+            }
          }
       }
+      // Преобразование трёх значного числа в текст. Например 374 (как: триста, семьдесят, четыре)
       if(numbAbs >= 101 && numbAbs <= 999){
          for(k = 0; k <= 10; k++){
             for(j = 0; j <= 10; j++){
+               // от 101 до 909
                if(remaind100 >= 1 && remaind100 <= 9){
                   if(circle100 == oneNumb[i] && circleOfCircle == oneNumb[k]){
                      if(remaindOfRemaild == oneNumb[j]){
-                        console.log(hunText[i], oneText[j]);
+                        answerField.innerText = `Вы загадали число ${hunText[i]} ${oneText[j]} ?`
                      }
                   }
                }
+               // от -101 до -909
                if(Math.abs(remaind100) >= 1 && Math.abs(remaind100) <= 9){
                   if(!sign && Math.abs(circle100) == oneNumb[i] && Math.abs(circleOfCircle) == oneNumb[k]){
                      if(Math.abs(remaindOfRemaild) == oneNumb[j]){
-                        console.log('Минус', hunText[i], oneText[j]);
+                        answerField.innerText = `Вы загадали число минус ${hunText[i]} ${oneText[j]} ?`
                      }   
                   }  
-               } 
+               }
+               // от 121 до 999
                if(remaind100 >= 21 && remaind100 <= 99){
                   if(circle100 == oneNumb[i] && circleOfCircle == oneNumb[k]){
                      if(remaindOfRemaild == oneNumb[j]){
-                        console.log(hunText[i], tanText[k], oneText[j])
+                        answerField.innerText = `Вы загадали число ${hunText[i]} ${tanText[k]} ${oneText[j]} ?`
                      };
                   };
-               };
+               }
+               // от -121 до -999
                if(Math.abs(remaind100) >= 21 && Math.abs(remaind100) <= 99){
                   if(!sign && Math.abs(circle100) == oneNumb[i] && Math.abs(circleOfCircle) == oneNumb[k]){
                      if(Math.abs(remaindOfRemaild) == oneNumb[j]){
-                        console.log('Минус', hunText[i], tanText[k], oneText[j])
+                        answerField.innerText = `Вы загадали число минус ${hunText[i]} ${tanText[k]} ${oneText[j]} ?`
                      };
                   };
-               };
+               }
             }
+            // от 111 до 919
             if(remaind100 >= 11 && remaind100 <= 19){
                if(circle100 == oneNumb[i] && remaind100 == elvNumb[k]){
-                  console.log(hunText[i], elvText[k])
+                  answerField.innerText = `Вы загадали число ${hunText[i]} ${elvText[k]} ?`
                }
-            };
+            }
+            // от -111 до -919
             if(Math.abs(remaind100) >= 11 && Math.abs(remaind100) <= 19){
                if(!sign && Math.abs(circle100) == oneNumb[i] && Math.abs(remaind100) == elvNumb[k]){
-                  console.log('Минус', hunText[i], elvText[k])
+                  answerField.innerText = `Вы загадали число минус ${hunText[i]} ${elvText[k]} ?`
                }
-            };
-            if(remaind100 >= 10 && remaind100 <= 90 ){
+            }
+            // от 110 до 990
+            if(remaind100 >= 10 && remaind100 <= 90){
                if(circle100 == oneNumb[i] && remaind100 == tanNumb[k]){
-                     console.log(hunText[i], tanText[k])
+                  answerField.innerText = `Вы загадали число ${hunText[i]} ${tanText[k]} ?`
                }
-            };
-            if(Math.abs(remaind100) >= 10 && Math.abs(remaind100) <= 90 ){
-               if(Math.abs(circle100) == oneNumb[i] && Math.abs(remaind100) == tanNumb[k]){
-                     console.log('Минус', hunText[i], tanText[k])
+            }
+            // от -110 до -990
+            if(Math.abs(remaind100) >= 10 && Math.abs(remaind100) <= 90){
+               if(!sign && Math.abs(circle100) == oneNumb[i] && Math.abs(remaind100) == tanNumb[k]){
+                  answerField.innerText = `Вы загадали число минус ${hunText[i]} ${tanText[k]} ?`
                }
-            };
+            }
          }
       }
    }
 };
-transform(0); // Введите любое положительное или отрицательное число от -999 до 999 включительно с 0.
+transform(answerNumber); // Введите любое положительное или отрицательное число от -999 до 999 включительно с 0.
