@@ -15,31 +15,62 @@
 </head>
 <body class="pattern">
 <div class="container">
-    <div class="row game-card">
-        <div class="col align-all">
-            <div class="card text-center w-400">
-                <div class="card-header">
-                    <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
+    <div class="game-card align-all">
+        <div class="row">
+            <div class="col-12 align-all">
+                <div class="alert alert-success w-400 m-1" role="alert">
+                    <p class="m-0" id="showAlert">Загадай число от -999 до 999 а я попробую угадать!</p>
                 </div>
-                <div class="card-body">
-                    <div class="row no-gutters">
-                        <div class="col">
-                            <h4 class="card-title mb-3"><span id="answerField">Вы загадали число 5?</span></h4>
+            </div>
+            <div class="col-12 align-all">
+                <div class="card text-center w-400">
+                    <div class="card-header">
+                        <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <h4 class="card-title mb-3"><span id="answerField">Вы загадали число 5?</span></h4>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-outline-primary" id="btnMinus"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M11 5v11.17l-4.88-4.88c-.39-.39-1.03-.39-1.42 0a.996.996 0 0 0 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0l6.59-6.59a.996.996 0 1 0-1.41-1.41L13 16.17V5c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg><br>меньше</button>
+                            <button class="btn btn-outline-success btn-lg" id="btnEqual">Верно!</button>
+                            <button class="btn btn-outline-primary" id="btnPlus">больше<br><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M13 19V7.83l4.88 4.88c.39.39 1.03.39 1.42 0a.996.996 0 0 0 0-1.41l-6.59-6.59a.996.996 0 0 0-1.41 0l-6.6 6.58a.996.996 0 1 0 1.41 1.41L11 7.83V19c0 .55.45 1 1 1s1-.45 1-1z"/></svg></button>
                         </div>
                     </div>
-                    <div class="btn-group">
-                        <button class="btn btn-primary" id="btnLess">&#129047;<br>меньше</button>
-                        <button class="btn btn-success btn-lg" id="btnEqual">Верно!</button>
-                        <button class="btn btn-primary" id="btnOver">больше<br>&#129045;</button>
+                    <div class="card-footer">
+                        <button class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Сыграть ещё раз</button>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn-link" id="btnRetry">Заново</button>
-                </div>
+            </div>
+            
+            <div class="col-12 align-all">
+                <form class="row range-form" id="nova">
+                    <div class="col-12 z-3">
+                        <div class="collapse w-400" id="collapseExample">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col-4 z-3">
+                                        <input type="text" id="range-from" class="form-control" placeholder="От -999">
+                                    </div>
+                                    <div class="col-4 z-3">
+                                        <input type="text" id="range-to" class="form-control" placeholder="До 999">
+                                    </div>
+                                    <div class="col-4 z-3 d-grid">
+                                        <a type="submit" class="btn btn-outline-success" id="btnRetry" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Старт</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
 <script src="assets/js/script.js"></script>
+<script src="assets/js/bootstrap.js"></script>
 </body>
 </html>

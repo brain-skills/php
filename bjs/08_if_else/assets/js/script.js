@@ -1,41 +1,69 @@
 // Указываем диапазон От и До
-let minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+let minValue;
+let maxValue;
+const rangeFrom = document.querySelector('#range-from');
+const rangeTo = document.querySelector('#range-to');
+minValue = parseInt(rangeFrom.value);
+maxValue = parseInt(rangeTo.value);
 
 // Если указыны буквы или символы или пустота, присваиваем диапазон от 0 до 100
 if (isNaN(minValue) || isNaN(maxValue)){
    minValue = 0;
    maxValue = 100;
-}else if (minValue === 'string' || maxValue === 'string'){
+} else if (minValue === 'string' || maxValue === 'string'){
    minValue = 0;
    maxValue = 100;
-}
-let answerNumber  = Math.floor((minValue + maxValue) / 2);
+} else if (minValue === '' || maxValue === ''){
+   minValue = 0;
+   maxValue = 100;
+} else if (minValue === 0 || maxValue === 0){
+   minValue = 0;
+   maxValue = 100;
+};
+
+let answerNumber = Math.floor((minValue + maxValue) / 2);
+console.log('Среднее число диапазона от', minValue, 'до', maxValue, '=', answerNumber);
 let orderNumber = 1;
 let gameRun = true;
 (maxValue > 999) ? maxValue = 999 : maxValue; // ограничение максимального числа до 999
 (minValue < -999) ? minValue = -999 : minValue; // ограничение минимального числа до -999
-alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+let showAlert = document.querySelector('#showAlert');
+showAlert.innerHTML = `Вы загадали число от ${minValue} до ${maxValue}! И я угадаю его!`;
 const orderNumberField = document.getElementById('orderNumberField');
 const answerField = document.getElementById('answerField');
 orderNumberField.innerText = orderNumber;
 answerField.innerText = `Вы загадали число ${answerNumber}?`;
 
 // запускаем игру заного
-document.getElementById('btnRetry').addEventListener('click', function() {
-   minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-   maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-   alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-   answerNumber  = Math.floor((minValue + maxValue) / 2);
+document.querySelector('#btnRetry').addEventListener('click', function() {
+   minValue = parseInt(rangeFrom.value);
+   maxValue = parseInt(rangeTo.value);
+   // Если указыны буквы или символы или пустота, присваиваем диапазон от 0 до 100
+   if (isNaN(minValue) || isNaN(maxValue)){
+      minValue = 0;
+      maxValue = 100;
+   } else if (minValue === 'string' || maxValue === 'string'){
+      minValue = 0;
+      maxValue = 100;
+   } else if (minValue === '' || maxValue === ''){
+      minValue = 0;
+      maxValue = 100;
+   } else if (minValue === 0 || maxValue === 0){
+      minValue = 0;
+      maxValue = 100;
+   };
+   showAlert.innerHTML = `Вы загадали число от ${minValue} до ${maxValue}! И я угадаю его!`;
+   answerNumber = Math.floor((minValue + maxValue) / 2);
+   console.log('Среднее число диапазона от', minValue, 'до', maxValue, '=', answerNumber);
    orderNumber = 1;
    gameRun = true;
    orderNumberField.innerText = orderNumber;
    answerField.innerText = `Вы загадали число ${answerNumber}?`;
    transform(answerNumber);
-})
+});
 
 // указываем что число меньше
-document.getElementById('btnLess').addEventListener('click', function() {
+document.getElementById('btnMinus').addEventListener('click', function() {
    if (gameRun){
       if (maxValue === minValue){
          const phraseRandom = Math.round( Math.random() * 2);
@@ -44,7 +72,8 @@ document.getElementById('btnLess').addEventListener('click', function() {
          gameRun = false;
       } else {
          maxValue = answerNumber - 1;
-         answerNumber = Math.floor(((minValue +1)  + maxValue) / 2);
+         answerNumber = Math.floor(((minValue+1) + maxValue) / 2);
+         console.log('Среднее число диапазона от', minValue, 'до', maxValue, '=', answerNumber);
          orderNumber++;
          orderNumberField.innerText = orderNumber;
          const questionRandom = Math.round(Math.random() * 2); 
@@ -53,10 +82,10 @@ document.getElementById('btnLess').addEventListener('click', function() {
          transform(answerNumber);
       }
    }
-})
+});
 
 // указываем что число больше
-document.getElementById('btnOver').addEventListener('click', function() {
+document.getElementById('btnPlus').addEventListener('click', function() {
    if (gameRun){
       if (minValue === maxValue){
          const phraseRandom = Math.round( Math.random() * 2);
@@ -66,12 +95,13 @@ document.getElementById('btnOver').addEventListener('click', function() {
       } else {
          minValue = answerNumber  + 1;
          answerNumber = Math.floor((minValue + maxValue) / 2);
+         console.log('Среднее число диапазона от', minValue, 'до', maxValue, '=', answerNumber);
          orderNumber++;
          orderNumberField.innerText = orderNumber;
          const questionRandom = Math.round(Math.random() * 2); 
          const question = (questionRandom === 1) ? `Вы загадали ${answerNumber}?` : (questionRandom === 2) ? `Наверно это ${answerNumber}?` : `Может это ${answerNumber}?`;
          answerField.innerText = question;
-         transform(answerNumber); 
+         transform(answerNumber);
       }
    }
 });
@@ -83,6 +113,7 @@ document.getElementById('btnEqual').addEventListener('click', function() {
       const answer = (answerRandom ===1) ? `Я всегда угадываю\n\u{1F60E}` : (answerRandom === 2) ? `Ванга отдыхает\n\u{1F638}` : `Я есть Оракул\n\u{1F608}`;
       answerField.innerText = answer;
       gameRun = false;
+      console.log('Загаданное число: ', answerNumber);
    }
 });
 
@@ -105,7 +136,6 @@ function transform(number){
    const numbAbs = Math.abs(number); // получение положительных чисел из отрицательных
    let sign = true; // переменная для хранения знака (+) или (-). По умолчанию = (+) !
    if(number < 0){sign = false}; // если число меньше нуля, то знак (-) !
-
    for(let i=0; i <= 10; i++){
       // от 1, 2, 3 и тд, до 9 (полож-е числа !!!)
       if(number >= 0 && number <= 9 && oneNumb[i] == number){
@@ -175,17 +205,27 @@ function transform(number){
                if(remaind100 >= 21 && remaind100 <= 99){
                   if(circle100 == oneNumb[i] && circleOfCircle == oneNumb[k]){
                      if(remaindOfRemaild == oneNumb[j]){
-                        answerField.innerText = `Вы загадали число ${hunText[i]} ${tanText[k]} ${oneText[j]} ?`
-                     };
-                  };
+                        if(oneText[j].length != 0){
+                           if((hunText[i].length + tanText[k].length + oneText[j].length) + 2 < 20){
+                              answerField.innerText = `Вы загадали число ${hunText[i]} ${tanText[k]} ${oneText[j]} ?`;
+                              // console.log('Кол-во символов текста: ', hunText[i].length + tanText[k].length + oneText[j].length);
+                           }
+                        } else {
+                           if((hunText[i].length + tanText[k].length) + 1 < 20){
+                              answerField.innerText = `Вы загадали число ${hunText[i]} ${tanText[k]} ${oneText[j]} ?`;
+                              // console.log('Кол-во символов текста: ', hunText[i].length + tanText[k].length + oneText[j].length);
+                           }
+                        }
+                     }
+                  }
                }
                // от -121, -122, -123 и тд, до -999 (отриц-е числа !!!)
                if(Math.abs(remaind100) >= 21 && Math.abs(remaind100) <= 99){
                   if(!sign && Math.abs(circle100) == oneNumb[i] && Math.abs(circleOfCircle) == oneNumb[k]){
                      if(Math.abs(remaindOfRemaild) == oneNumb[j]){
                         answerField.innerText = `Вы загадали число минус ${hunText[i]} ${tanText[k]} ${oneText[j]} ?`
-                     };
-                  };
+                     }
+                  }
                }
             }
             // от 111-119, 211-219, 311-319 и тд, до 911-919 (полож-е числа !!!)
@@ -203,7 +243,10 @@ function transform(number){
             // от 110-190, 210-290, 310-390 и тд, до 910-990 (полож-е числа !!!)
             if(remaind100 >= 10 && remaind100 <= 90){
                if(circle100 == oneNumb[i] && remaind100 == tanNumb[k]){
-                  answerField.innerText = `Вы загадали число ${hunText[i]} ${tanText[k]} ?`
+                  if((hunText[i].length + tanText[k].length) + 1 < 20){
+                     answerField.innerText = `Вы загадали число ${hunText[i]} ${tanText[k]} ?`;
+                     // console.log((hunText[i].length) + (tanText[k].length) + 1);
+                  }
                }
             }
             // от 110-190, 210-290, 310-390 и тд, до 910-990 (отриц-е числа !!!)

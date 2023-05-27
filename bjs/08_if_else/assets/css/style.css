@@ -54,10 +54,11 @@ input, button {
     color: #fff;
 }
 .card-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .card-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .swal2-title {
     font-size: 1.0em !important;
@@ -74,4 +75,27 @@ input, button {
 }
 .swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
     background: rgba(0,0,0,.1) !important;
+}
+.range-form {
+    padding: 0;
+    margin: 0;
+}
+#btnOver {
+    border-radius: 0 15px 50px 0;
+}
+#btnLess {
+    border-radius: 50px 0 0 15px;
+}
+.card, .card-footer {
+    border-radius: 0 !important;
+}
+.alert p {
+    font-size: 14px;
+    font-weight: 600;
+}
+.alert-success{
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0 !important;
+    color: #198754;
 }
