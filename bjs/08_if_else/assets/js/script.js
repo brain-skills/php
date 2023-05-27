@@ -16,7 +16,7 @@ if (isNaN(minValue) || isNaN(maxValue)){
 } else if (minValue === '' || maxValue === ''){
    minValue = 0;
    maxValue = 100;
-} else if (minValue === 0 || maxValue === 0){
+} else if (minValue === 0 && maxValue === 0){
    minValue = 0;
    maxValue = 100;
 };
@@ -48,7 +48,7 @@ document.querySelector('#btnRetry').addEventListener('click', function() {
    } else if (minValue === '' || maxValue === ''){
       minValue = 0;
       maxValue = 100;
-   } else if (minValue === 0 || maxValue === 0){
+   } else if (minValue === 0 && maxValue === 0){
       minValue = 0;
       maxValue = 100;
    };
