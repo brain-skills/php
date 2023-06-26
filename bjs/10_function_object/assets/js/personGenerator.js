@@ -116,37 +116,37 @@ var personGenerator = {
         return obj.list[prop];
     },
 
-    // мужские имена
+    // получаем random'ные мужские имена
     randomMaleName: function() {
         return this.randomValue(this.maleNames);
     },
 
-    // женские имена
+    // получаем random'ные женские имена
     randomFemaleName: function() {
         return this.randomValue(this.femaleNames);
     },
 
-    // фимилии
+    // получаем random'ные фимилии
     randomSurname: function() {
         return this.randomValue(this.surnames);
     },
 
-    // даты
+    // получаем random'ные даты
     randomDates: function() {
         return this.randomValue(this.dates);
     },
 
-    // мужские профессии
+    // получаем random'ные мужские профессии
     randomMaleProf: function() {
         return this.randomValue(this.maleProfessions);
     },
 
-    // женские профессии
+    // получаем random'ные женские профессии
     randomFemaleProf: function() {
         return this.randomValue(this.femaleProfessions);
     },
 
-    // командный центр, передача данных для последующих преобразований
+    // Формирование персонажа, передача данных для последующих преобразований
     getPerson: function (){
         this.person = {};
 
@@ -165,6 +165,6 @@ var personGenerator = {
 
         // Дата рождения. Получаем рандомные числа от 0 до 30, затем список месяцев и далее рандомное число от 1970 до 2015
         this.person.birthYear = `${this.randomIntNumber(30, 1)} ${this.randomDates()} ${this.randomIntNumber(2015, 1970)}`;
-        return this.person;
+        return this.person; // Возвращаем данные о персонаже
     }
 };

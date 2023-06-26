@@ -99,3 +99,10 @@ input, button {
     border-radius: 0 !important;
     color: #198754;
 }
+a{
+    text-decoration: none;
+}
+
+p:last-child{
+    margin-bottom: 0;
+}
