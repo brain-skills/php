@@ -170,8 +170,7 @@ var personGenerator = {
             this.person.firstName = this.randomMaleName(); // рандомное мужское имя
             this.person.lastName = this.randomSurname(); // рандомное мужское фамилие
 
-
-
+            // генерируем окончания для мужского отчества
             let whileName = `${this.randomMaleName()}`; // рандомное мужское отчество
             if (whileName.slice(-2) === 'ий') {whileName.replace('ий', 'иевич')};
             if (whileName.slice(-2) === 'ей') {whileName.replace('ей', 'еевич')};
@@ -180,16 +179,13 @@ var personGenerator = {
             this.person.patronymic = whileName;
             console.log(whileName);
 
-
-
             this.person.gender = this.GENDER_MALE; // пол мужской
             this.person.profession = this.randomMaleProf(); // мужская профессия
         } else {
             this.person.firstName = this.randomFemaleName(); // рандомное женское имя
             this.person.lastName = `${this.randomSurname()}a`; // рандомное женское фамилие
 
-
-
+            // генерируем окончания для женского отчества
             let whileName = `${this.randomMaleName()}`; // рандомное женское отчество
             if (whileName.slice(-2) === 'ий') {whileName.replace('ий', 'иевна')};
             if (whileName.slice(-2) === 'ей') {whileName.replace('ей', 'еевна')};
@@ -197,8 +193,6 @@ var personGenerator = {
             if (whileName.slice(-2) === 'ем') {whileName.replace('ем', 'емовна')};
             this.person.patronymic = whileName;
             console.log(whileName);
-
-
 
             this.person.gender = this.GENDER_FEMALE; // пол женский
             this.person.profession = this.randomFemaleProf(); // женская профессия
