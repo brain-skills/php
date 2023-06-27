@@ -101,6 +101,21 @@ var personGenerator = {
             "9": "Няня"
         }
     }`,
+    // женские отчества
+    femaleProfessions: `{
+        "count": 9,
+        "list": {
+            "1": "Учительница",
+            "2": "Продавщица",
+            "3": "Воспитательница",
+            "4": "Уборщица",
+            "5": "Домработница",
+            "6": "Акушерка",
+            "7": "Стюардесса",
+            "8": "Санитарка",
+            "9": "Няня"
+        }
+    }`,
 
     // Выбор пола
     GENDER_MALE: 'Мужчина',
@@ -150,15 +165,41 @@ var personGenerator = {
     getPerson: function (){
         this.person = {};
 
-        // групируем условие "если 1 то М" - "если 0 то Ж"
+        // групируем условие по полам, "если 1 то М" - "если 0 то Ж"
         if(this.randomIntNumber()){
             this.person.firstName = this.randomMaleName(); // рандомное мужское имя
             this.person.lastName = this.randomSurname(); // рандомное мужское фамилие
+
+
+
+            let whileName = `${this.randomMaleName()}`; // рандомное мужское отчество
+            if (whileName.slice(-2) === 'ий') {whileName.replace('ий', 'иевич')};
+            if (whileName.slice(-2) === 'ей') {whileName.replace('ей', 'еевич')};
+            if (whileName.slice(-2) === 'та') {whileName.replace('та', 'тович')};
+            if (whileName.slice(-2) === 'ем') {whileName.replace('ем', 'емович')};
+            this.person.patronymic = whileName;
+            console.log(whileName);
+
+
+
             this.person.gender = this.GENDER_MALE; // пол мужской
             this.person.profession = this.randomMaleProf(); // мужская профессия
         } else {
             this.person.firstName = this.randomFemaleName(); // рандомное женское имя
             this.person.lastName = `${this.randomSurname()}a`; // рандомное женское фамилие
+
+
+
+            let whileName = `${this.randomMaleName()}`; // рандомное женское отчество
+            if (whileName.slice(-2) === 'ий') {whileName.replace('ий', 'иевна')};
+            if (whileName.slice(-2) === 'ей') {whileName.replace('ей', 'еевна')};
+            if (whileName.slice(-2) === 'та') {whileName.replace('та', 'товна')};
+            if (whileName.slice(-2) === 'ем') {whileName.replace('ем', 'емовна')};
+            this.person.patronymic = whileName;
+            console.log(whileName);
+
+
+
             this.person.gender = this.GENDER_FEMALE; // пол женский
             this.person.profession = this.randomFemaleProf(); // женская профессия
         }
