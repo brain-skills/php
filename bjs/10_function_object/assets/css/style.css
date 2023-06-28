@@ -23,15 +23,28 @@ body {
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
-body.pattern::before {
+.pattern::before {
     background-image: url("../images/noise.png");
     content: "";
     position: fixed;
     width: 100%;
     margin: 0px;
     background-size: 512px 512px;
+    background-repeat: repeat;
     z-index: 0;
     height: 100% !important;
+    animation: nudge 6s linear infinite alternate-reverse;
+}
+.card:hover .pattern::before{
+    animation-play-state: paused;
+}
+@keyframes nudge {
+    0%{
+        background-position: 0% 0%;
+    }
+    100%{
+        background-position: 100% 0%;
+    }
 }
 .game-card {
     height: 100vh;

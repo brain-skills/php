@@ -10,9 +10,3 @@ function parallax(event) {
   });
 };
 // Конец анимации фигур //
-
-const reloadButton = document.querySelector('#reloadButton');
-reloadButton.onclick = function(e){
-    window.location.reload();
-    e.preventDefault();
-}

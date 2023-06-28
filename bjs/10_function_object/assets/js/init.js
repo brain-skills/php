@@ -25,3 +25,15 @@ resetPerson.onclick = function(event){
     personProfession.innerText = 'не указана';
     event.preventDefault();
 }
+
+const reloadButton = document.querySelector('#reloadButton');
+reloadButton.onclick = function(e){
+    const initPerson = personGenerator.getPerson();
+    personFirstName.innerText = initPerson.firstName;
+    personSurname.innerText = initPerson.lastName;
+    personPatronymic.innerText = initPerson.patronymic;
+    personGender.innerText = initPerson.gender;
+    personBirthYear.innerText = initPerson.birthYear;
+    personProfession.innerText = initPerson.profession;
+    e.preventDefault();
+}
