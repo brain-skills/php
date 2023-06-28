@@ -101,7 +101,7 @@ var personGenerator = {
             "9": "Няня"
         }
     }`,
-
+    
     // Выбор пола
     GENDER_MALE: 'Мужчина',
     GENDER_FEMALE: 'Женщина',
@@ -181,8 +181,26 @@ var personGenerator = {
             this.person.profession = this.randomFemaleProf(); // женская профессия
         }
 
-        // Дата рождения. Получаем рандомные числа от 0 до 30, затем список месяцев и далее рандомное число от 1970 до 2015
-        this.person.birthYear = `${this.randomIntNumber(30, 1)} ${this.randomDates()} ${this.randomIntNumber(2015, 1970)}`;
-        return this.person; // Возвращаем данные о персонаже
+        // Дата рождения. Получаем random число от 1 до 31, random месяц и random год от 1970 до 2015
+        // 31 дней: Января, Марта, Мая, Июля, Августа, Октября, Декабря
+        let whileDate = this.randomIntNumber(31, 1);
+        let dateDefault = this.randomDates();
+
+        // 28 дней: Февраля
+        if (dateDefault == 'Февраля') {whileDate = this.randomIntNumber(28, 1)};
+
+        // 30 дней: Апреля, Июня, Сентября, Ноября
+        if (dateDefault == 'Апреля') {whileDate = this.randomIntNumber(30, 1)};
+        if (dateDefault == 'Июня') {whileDate = this.randomIntNumber(30, 1)};
+        if (dateDefault == 'Сентября') {whileDate = this.randomIntNumber(30, 1)};
+        if (dateDefault == 'Ноября') {whileDate = this.randomIntNumber(30, 1)};
+        
+        // формируем полную дату: день, месяц, год
+        this.person.birthYear = `${whileDate} ${dateDefault} ${this.randomIntNumber(2015, 1970)}`;
+
+        // console.log(dateDefault);
+
+        // Возвращаем данные о персонаже
+        return this.person;
     }
 };
