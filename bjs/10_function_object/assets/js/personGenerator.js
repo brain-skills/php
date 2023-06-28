@@ -171,13 +171,12 @@ var personGenerator = {
             this.person.lastName = this.randomSurname(); // рандомное мужское фамилие
 
             // генерируем окончания для мужского отчества
-            let whileName = `${this.randomMaleName()}`; // рандомное мужское отчество
-            if (whileName.slice(-2) === 'ий') {whileName.replace('ий', 'иевич')};
-            if (whileName.slice(-2) === 'ей') {whileName.replace('ей', 'еевич')};
-            if (whileName.slice(-2) === 'та') {whileName.replace('та', 'тович')};
-            if (whileName.slice(-2) === 'ем') {whileName.replace('ем', 'емович')};
-            this.person.patronymic = whileName;
-            console.log(whileName);
+            let whileName = this.randomMaleName();
+            this.person.patronymic = whileName+"ович";
+            if (whileName.slice(-2) === 'ий') {this.person.patronymic = whileName.replace('ий', 'иевич')};
+            if (whileName.slice(-2) === 'ей') {this.person.patronymic = whileName.replace('ей', 'еевич')};
+            if (whileName.slice(-2) === 'та') {this.person.patronymic = whileName.replace('та', 'тович')};
+            if (whileName.slice(-2) === 'ем') {this.person.patronymic = whileName.replace('ем', 'емович')};
 
             this.person.gender = this.GENDER_MALE; // пол мужской
             this.person.profession = this.randomMaleProf(); // мужская профессия
@@ -186,13 +185,12 @@ var personGenerator = {
             this.person.lastName = `${this.randomSurname()}a`; // рандомное женское фамилие
 
             // генерируем окончания для женского отчества
-            let whileName = `${this.randomMaleName()}`; // рандомное женское отчество
-            if (whileName.slice(-2) === 'ий') {whileName.replace('ий', 'иевна')};
-            if (whileName.slice(-2) === 'ей') {whileName.replace('ей', 'еевна')};
-            if (whileName.slice(-2) === 'та') {whileName.replace('та', 'товна')};
-            if (whileName.slice(-2) === 'ем') {whileName.replace('ем', 'емовна')};
-            this.person.patronymic = whileName;
-            console.log(whileName);
+            let whileName = this.randomMaleName();
+            this.person.patronymic = whileName+"овна";
+            if (whileName.slice(-2) === 'ий') {this.person.patronymic = whileName.replace('ий', 'иевна')};
+            if (whileName.slice(-2) === 'ей') {this.person.patronymic = whileName.replace('ей', 'еевна')};
+            if (whileName.slice(-2) === 'та') {this.person.patronymic = whileName.replace('та', 'товна')};
+            if (whileName.slice(-2) === 'ем') {this.person.patronymic = whileName.replace('ем', 'емовна')};
 
             this.person.gender = this.GENDER_FEMALE; // пол женский
             this.person.profession = this.randomFemaleProf(); // женская профессия
